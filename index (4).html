@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Zeeshan — Mechatronics Engineering Portfolio</title>
+<meta name="description" content="Muhammad Zeeshan — Mechatronics Engineering undergraduate at MUET Jamshoro. Robotics, embedded systems, automation & AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f3f5f6;
+    --panel:#ffffff;
+    --text:#12161a;
+    --muted:#626c74;
+    --line:#e3e7e9;
+    --accent:#1e7f63;
+    --accent-strong:#166951;
+    --accent-soft:#e4f3ec;
+    --accent-2:#b8862e;
+    --accent-2-soft:#f7edda;
+    --shadow:0 1px 2px rgba(18,22,26,.04), 0 8px 24px rgba(18,22,26,.05);
+  }
+  html.dark{
+    --bg:#0e1416;
+    --bg-soft:#161e21;
+    --panel:#121a1c;
+    --text:#eaefee;
+    --muted:#93a3a0;
+    --line:#26312f;
+    --accent:#45c79a;
+    --accent-strong:#5fdcaf;
+    --accent-soft:#132720;
+    --accent-2:#e0a94b;
+    --accent-2-soft:#241d10;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:'Inter',sans-serif;line-height:1.65;font-size:16.5px;
+    -webkit-font-smoothing:antialiased;
+    transition:background-color .3s ease, color .3s ease;
+  }
+  h1,h2,h3,.display{font-family:'Sora',sans-serif;letter-spacing:-.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;padding:0;list-style:none;}
+  @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HEADER ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background-color .3s ease,border-color .3s ease;}
+  html.dark header{background:rgba(14,20,22,.82);}
+  .navbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.05rem;}
+  .logo span{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .status-pill{display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:20px;}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);position:relative;flex-shrink:0;}
+  .status-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid var(--accent);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{transform:scale(.5);opacity:.8;}100%{transform:scale(1.8);opacity:0;}}
+  .theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg-soft);cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;color:var(--text);}
+  nav.links{display:flex;gap:22px;}
+  nav.links a{font-size:.86rem;color:var(--muted);}
+  nav.links a:hover{color:var(--accent);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);width:36px;height:36px;border-radius:8px;cursor:pointer;}
+  @media (max-width:700px){
+    nav.links{position:fixed;top:65px;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .25s ease;padding:6px 0;}
+    nav.links.open{transform:translateY(0);}
+    nav.links a{padding:14px 24px;border-top:1px solid var(--line);}
+    .nav-toggle{display:flex;align-items:center;justify-content:center;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 60px;}
+  .hero-grid{display:flex;align-items:center;gap:44px;justify-content:space-between;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:.85rem;letter-spacing:.06em;margin-bottom:14px;}
+  .hero h1{font-size:clamp(2.3rem,6vw,3.4rem);font-weight:800;margin:0 0 14px;line-height:1.08;}
+  .hero .role{font-size:1.1rem;color:var(--text);margin:0 0 8px;font-weight:500;}
+  .hero .tags{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.85rem;margin:0 0 30px;}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{font-size:.9rem;font-weight:600;padding:12px 22px;border-radius:8px;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);transition:.2s;}
+  .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn-primary:hover{background:var(--accent-strong);border-color:var(--accent-strong);}
+  .btn-ghost{color:var(--text);background:var(--bg-soft);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .avatar{width:172px;height:172px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:2.6rem;color:#fff;position:relative;box-shadow:var(--shadow);overflow:hidden;}
+  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  @media (max-width:640px){.hero-grid{flex-direction:column-reverse;text-align:center;}.btn-row{justify-content:center;}.avatar{width:132px;height:132px;font-size:2rem;}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:34px;}
+  .sec-num{font-family:'IBM Plex Mono',monospace;color:var(--accent-2);font-size:.8rem;}
+  .sec-head h2{font-size:1.55rem;margin:0;}
+  .lead-p{color:var(--muted);}
+
+  /* ---------- ABOUT ---------- */
+  .about p{margin:0 0 16px;color:var(--text);}
+  .about strong{color:var(--accent-strong);}
+  html.dark .about strong{color:var(--accent);}
+
+  /* ---------- SKILLS ---------- */
+  .skill-group{margin-bottom:20px;}
+  .skill-group:last-child{margin-bottom:0;}
+  .skill-cat{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-size:.82rem;padding:6px 13px;border-radius:20px;background:var(--accent-soft);color:var(--accent-strong);}
+  html.dark .pill{color:var(--accent);}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:32px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:"";position:absolute;left:-26px;top:5px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg);}
+  .t-date{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.04em;color:var(--accent-2);text-transform:uppercase;margin-bottom:4px;}
+  .t-title{font-family:'Sora',sans-serif;font-weight:600;font-size:1.02rem;margin:0 0 2px;}
+  .t-org{color:var(--muted);font-size:.88rem;margin-bottom:8px;}
+  .t-desc{color:var(--muted);font-size:.9rem;margin:0;}
+  .t-desc + .t-desc{margin-top:8px;}
+
+  /* certifications compact list */
+  .cert-list{margin-top:36px;border-top:1px solid var(--line);padding-top:28px;}
+  .cert-list-title{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;}
+  .cert-row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .cert-row:last-child{border-bottom:none;}
+  .cert-row h4{margin:0 0 4px;font-size:.94rem;font-weight:600;font-family:'Sora',sans-serif;}
+  .cert-row p{margin:0;color:var(--muted);font-size:.84rem;max-width:520px;}
+  .cert-badge{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--accent-2);border:1px solid var(--accent-2);padding:5px 11px;border-radius:20px;height:fit-content;white-space:nowrap;}
+
+  /* ---------- PROJECTS ---------- */
+  .project{padding:28px 0;border-bottom:1px solid var(--line);}
+  .project:first-child{padding-top:0;}
+  .project:last-child{border-bottom:none;padding-bottom:0;}
+  .project-meta{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--accent-2);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
+  .project h3{font-size:1.1rem;margin:0 0 6px;}
+  .project-role{color:var(--muted);font-size:.85rem;margin-bottom:12px;}
+  .project p.desc{color:var(--muted);font-size:.92rem;margin:0 0 14px;}
+  .project-link{display:inline-flex;align-items:center;gap:6px;font-size:.86rem;font-weight:600;color:var(--accent-strong);}
+  html.dark .project-link{color:var(--accent);}
+  .project-link:hover{text-decoration:underline;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;}
+  .contact-info p{color:var(--muted);margin:0 0 24px;}
+  .contact-links{display:flex;flex-direction:column;gap:14px;}
+  .contact-links a{display:flex;align-items:center;gap:10px;font-size:.94rem;font-weight:500;}
+  .contact-links a:hover{color:var(--accent);}
+  .ico-box{width:34px;height:34px;border-radius:8px;background:var(--bg-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+  form{display:flex;flex-direction:column;gap:14px;}
+  .field label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:6px;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em;}
+  .field input,.field textarea{width:100%;padding:11px 14px;background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:.92rem;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+  .form-note{font-size:.78rem;color:var(--muted);margin:0;}
+  @media (max-width:700px){.contact-grid{grid-template-columns:1fr;}}
+
+  footer{padding:30px 0;text-align:center;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.76rem;border-top:1px solid var(--line);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.show{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap navbar">
+    <a href="#" class="logo">M<span>Z</span>.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="status-pill"><span class="status-dot"></span>Open to Internships</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Hello, I am</div>
+      <h1 class="reveal">Muhammad Zeeshan</h1>
+      <p class="role reveal">BEng Mechatronics Engineering — 3rd Year, MUET Jamshoro</p>
+      <p class="tags reveal">Robotics · Embedded Systems · Automation · AI</p>
+      <div class="btn-row reveal">
+        <a href="mailto:zk0195973@gmail.com" class="btn btn-primary">Get in Touch</a>
+        <a href="files/Muhammad_Zeeshan_CV.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Download CV</a>
+      </div>
+    </div>
+    <div class="avatar reveal">
+      <img src="files/profile.jpg" alt="Muhammad Zeeshan" onerror="this.style.display='none'">
+      <span>MZ</span>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>About Me</h2></div>
+    <div class="about reveal">
+      <p>I'm a <strong>3rd-year Mechatronics Engineering student at Mehran University of Engineering &amp; Technology (MUET), Jamshoro</strong>, with a cross-disciplinary foundation across robotics, embedded systems, automation, and AI.</p>
+      <p>Certified by <strong>Northwestern University in Modern Robotics</strong> and backed by IEEE-recognised coursework, hands-on Arduino projects, and professional HIRA safety training, I'm looking to bring academic groundwork into real industry impact — currently seeking an internship in robotics, automation, or embedded systems.</p>
+      <p>Outside the lab, I play table tennis and cricket, and recently led a four-person team through a Mechanics of Machines project analysing an ornithopter's flapping-wing mechanism.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Skills</h2></div>
+    <div class="reveal">
+      <div class="skill-group">
+        <div class="skill-cat">Robotics &amp; Automation</div>
+        <div class="pills">
+          <span class="pill">Modern Robotics</span><span class="pill">Fleet Management</span><span class="pill">Path Planning</span><span class="pill">PLC Fundamentals</span><span class="pill">Soft Robotics (Interest)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Embedded Systems</div>
+        <div class="pills">
+          <span class="pill">Arduino</span><span class="pill">Microcontrollers</span><span class="pill">Sensor Integration</span><span class="pill">I2C Communication</span><span class="pill">PCB Design (Proteus / Multisim)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">AI &amp; Machine Learning</div>
+        <div class="pills">
+          <span class="pill">Machine Learning</span><span class="pill">Deep Learning</span><span class="pill">ML for Design Automation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">CAD &amp; Simulation</div>
+        <div class="pills">
+          <span class="pill">SolidWorks</span><span class="pill">SolidWorks Simulation</span><span class="pill">AutoCAD</span><span class="pill">MATLAB &amp; Simulink</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-cat">Programming</div>
+        <div class="pills">
+          <span class="pill">C</span><span class="pill">C++ (Basic)</span><span class="pill">Python</span><span class="pill">Arduino IDE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Education</h2></div>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <div class="t-date">Aug 2024 – Present</div>
+        <div class="t-title">BE Mechatronics Engineering</div>
+        <div class="t-org">Mehran University of Engineering &amp; Technology (MUET), Jamshoro · CGPA 3.18 / 4.00</div>
+        <p class="t-desc">Relevant coursework: Engineering Mechanics, Electrical Circuits &amp; Electronics, Control Systems, Microcontrollers, CAD &amp; Manufacturing Processes.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-date">Jul 2022 – May 2024</div>
+        <div class="t-title">HSSC — Pre-Engineering</div>
+        <div class="t-org">Government Boys High Secondary School, Hayat Pitafi · 813 / 1100</div>
+      </div>
+      <div class="t-item">
+        <div class="t-date">Aug 2020 – May 2022</div>
+        <div class="t-title">SSC — Science</div>
+        <div class="t-org">Government Boys High Secondary School, Hayat Pitafi · 886 / 1100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Certifications &amp; Training</h2></div>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <div class="t-date">2025</div>
+        <div class="t-title">Hazard Identification and Risk Assessment (HIRA)</div>
+        <div class="t-org">ISO &amp; ASCE-MUET Student Chapter · 5-Day Training</div>
+        <p class="t-desc">Trainer: Engr. Mahmood Ali Arain, CEO LEAD HSE. Structured methodology for identifying workplace hazards and evaluating risk severity in industrial environments.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-date">Oct 2024</div>
+        <div class="t-title">Project-Based Arduino Training</div>
+        <div class="t-org">Self-Initiated / Workshop-Based</div>
+        <p class="t-desc">Designed and built circuits progressing from basic LED control to full sensor-actuator integration using the Arduino IDE.</p>
+      </div>
+    </div>
+
+    <div class="cert-list reveal">
+      <div class="cert-list-title">Professional Certifications</div>
+      <div class="cert-row">
+        <div><h4>Modern Robotics: Mechanics, Planning, and Control — Specialization</h4><p>Northwestern University · Coursera — kinematics, dynamics, motion planning, and control theory.</p></div>
+        <div class="cert-badge">Coursera</div>
+      </div>
+      <div class="cert-row">
+        <div><h4>AI-Aided Drive System Design, Control &amp; Maintenance for More-Electric Aircraft</h4><p>IEEE · Instructor Yuan Gao — AI in electric aircraft propulsion and condition monitoring.</p></div>
+        <div class="cert-badge">IEEE</div>
+      </div>
+      <div class="cert-row">
+        <div><h4>ML Enabled Design Automation &amp; Optimization for Electric Transportation Power Systems</h4><p>IEEE — applied ML for automated design and performance optimization in EV power systems.</p></div>
+        <div class="cert-badge">IEEE</div>
+      </div>
+      <div class="cert-row">
+        <div><h4>Artificial Intelligence (Machine Learning, Deep Learning, Communication)</h4><p>NAVTTC · PM Digital Learning Programme, Batch 1.</p></div>
+        <div class="cert-badge">NAVTTC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Projects</h2></div>
+    <div class="reveal">
+
+      <div class="project">
+        <div class="project-meta">MTE211 · Instrumentation &amp; Measurements · May 2026</div>
+        <h3>Water Turbidity Measurement System</h3>
+        <div class="project-role">Embedded Systems Engineer</div>
+        <p class="desc">Real-time water quality monitor built on an Arduino UNO and an analog turbidity sensor. Raw ADC values are mapped to a 0–100 turbidity scale and checked against a threshold of 25 — below is reported CLEAR (green LED), above is DIRTY (red LED) — with live numeric and status output on a 16×2 I2C LCD refreshed every 100ms. Tested across clean tap water (~680 ADC, CLEAR) through highly turbid samples (~150 ADC, ~80% turbidity, DIRTY).</p>
+        <a class="project-link" href="files/Water_Turbidity_Sensor_Report.pdf" target="_blank" rel="noopener">View Report ↗</a>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">Mechanics of Machines · PBL Report</div>
+        <h3>Ornithopter Mechanism Report</h3>
+        <div class="project-role">Group Leader — submitted to Dr. Saifullah Samo, MUET</div>
+        <p class="desc">Led a four-person team analysing the mechanism behind an ornithopter — a machine that flies by flapping wings, converting rotary motor input into oscillating wing motion through a linkage mechanism. Covered the kinematic breakdown and motion-conversion principles behind the design.</p>
+        <a class="project-link" href="files/Ornithopter_Mechanism_Report.pdf" target="_blank" rel="noopener">View Report ↗</a>
+      </div>
+
+      <div class="project">
+        <div class="project-meta">MUET · Ongoing</div>
+        <h3>Robotics Fleet Management System</h3>
+        <div class="project-role">Robotics Engineer</div>
+        <p class="desc">Coordinated multi-robot management framework covering task allocation, path planning, and collision avoidance for autonomous robotic fleets, with sensor feedback and control logic enabling real-time status monitoring and dynamic re-routing.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Contact Me</h2></div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <p>Currently seeking an internship in robotics, automation, or embedded systems engineering. Open to graduate roles and collaborative engineering projects — feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:zk0195973@gmail.com"><span class="ico-box">✉</span>zk0195973@gmail.com</a>
+          <a href="tel:03702412066"><span class="ico-box">📞</span>0370 2412066</a>
+          <a href="https://www.linkedin.com/in/zeeshan-khan-b5a324354?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener"><span class="ico-box">in</span>LinkedIn Profile</a>
+        </div>
+      </div>
+      <form id="contactForm">
+        <div class="field">
+          <label for="cName">Name</label>
+          <input type="text" id="cName" required>
+        </div>
+        <div class="field">
+          <label for="cEmail">Your Email</label>
+          <input type="email" id="cEmail" required>
+        </div>
+        <div class="field">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send</button>
+        <p class="form-note">Opens your email app with this message pre-filled, sent straight to zk0195973@gmail.com.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>Muhammad Zeeshan · Mechatronics Engineering Portfolio · MUET Jamshoro 2024–Present</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click',()=>{
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  const themeBtn=document.getElementById('themeToggle');
+  themeBtn.addEventListener('click',()=>{
+    document.documentElement.classList.toggle('dark');
+    themeBtn.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+  });
+
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('cName').value;
+    const email=document.getElementById('cEmail').value;
+    const msg=document.getElementById('cMsg').value;
+    const subject=encodeURIComponent('Portfolio contact from '+name);
+    const body=encodeURIComponent(msg+'\n\n— '+name+' ('+email+')');
+    window.location.href='mailto:zk0195973@gmail.com?subject='+subject+'&body='+body;
+  });
+</script>
+</body>
+</html>
